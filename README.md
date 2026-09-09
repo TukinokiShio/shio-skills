@@ -1,24 +1,49 @@
 # shio-skills
 
-用于分享经过人工确认、适合公开使用的优质 agent skills。
+Practical skills for AI coding agents.
 
-## 发布原则
+`shio-skills` is a curated collection of reusable agent skills built to help developers move from a blank prompt to a useful result with less repeated setup.
 
-- 本仓库是公开仓库，不存放私有 skill、内部路径、访问凭据、个人资料或未获授权的项目内容。
-- 只有在作者明确提出要分享某个 skill 时，才会将它发布到这里。
-- 公开发布前，必须完成内容审查、隐私/秘密扫描、提示注入与供应链风险检查，并确认许可证和第三方来源。
-- 发布工具默认只执行检查和预览；没有明确的公开发布指令时，不会向本仓库推送。
+## Browse the collection
 
-当前仓库暂不包含任何 skill。后续内容会按上述规则逐项加入。
+Skills will be published as self-contained directories under [`skills/`](skills/). Each skill is designed to be understandable before installation and useful without requiring the rest of this repository.
 
-## 目录约定
+| Skill | What it helps with | Status |
+| --- | --- | --- |
+| — | The first public skills are being prepared. | Coming soon |
 
-每个可分享 skill 使用独立目录，至少包含：
+## What to expect from a skill
+
+Every published skill should make these questions easy to answer:
+
+- What problem does it solve?
+- When should an agent use it?
+- What does it produce or change?
+- What tools or dependencies does it need?
+- What are its limits and failure cases?
+- Can I see a small example before I try it?
+
+## Using a skill
+
+When a skill is published, its own directory will contain the installation and usage instructions. The general pattern is:
 
 ```text
-<skill-name>/
-└── SKILL.md
+skills/
+└── <skill-name>/
+    ├── SKILL.md
+    ├── README.md       # optional: user-facing guide
+    ├── references/     # optional: detailed material
+    ├── scripts/        # optional: deterministic helpers
+    └── examples/       # optional: small working examples
 ```
 
-如包含脚本、模板或参考资料，也必须经过同样的安全与许可证检查。
+Clone the repository, open the skill directory you want, and follow that skill's README. Do not assume that every skill supports every agent runtime; compatibility is documented per skill.
+
+## Design goal
+
+The collection favors focused, composable skills over a large framework. A good skill should be easy to inspect, easy to try, and easy to remove when it is no longer useful.
+
+## License
+
+Licensing is declared per skill. Until a skill is published, this repository makes no blanket license grant for future contents.
 
