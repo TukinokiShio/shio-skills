@@ -10,7 +10,8 @@ Skills will be published as self-contained directories under [`skills/`](skills/
 
 | Skill | What it helps with | Status |
 | --- | --- | --- |
-| — | The first public skills are being prepared. | Coming soon |
+| [first-principle](skills/first-principle/) | Reduce ambiguity and unnecessary complexity with evidence-driven reasoning. | Available |
+| [uncertainty-blindspot-audit](skills/uncertainty-blindspot-audit/) | Surface weak assumptions, missing factors, and the smallest useful validation steps. | Available |
 
 ## What to expect from a skill
 
@@ -46,4 +47,3 @@ The collection favors focused, composable skills over a large framework. A good 
 ## License
 
 Licensing is declared per skill. Until a skill is published, this repository makes no blanket license grant for future contents.
-
