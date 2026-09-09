@@ -1,6 +1,7 @@
 ---
 name: reference-first-dev
 description: Search for proven implementations before designing a new project, feature, or module. Compare candidates by fit, maintenance, community evidence, and license, then recommend reuse, adaptation, or a clean-room design.
+license: MIT
 ---
 
 # Reference-First Development

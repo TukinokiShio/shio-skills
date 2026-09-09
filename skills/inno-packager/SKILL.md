@@ -1,6 +1,7 @@
 ---
 name: inno-packager
 description: Build and troubleshoot Windows installers with Inno Setup 6. Use for .iss scripts, ISCC compilation, shortcuts, registry entries, uninstall behavior, and installer diagnostics.
+license: MIT
 permissions:
   - file_read
   - file_write
