@@ -2,6 +2,7 @@
 name: first-principle
 description: Apply first-principles reasoning to ambiguous, solution-led, scope-expanding, or evidence-sensitive work across product decisions, research, writing, operations, learning, and engineering. Use selectively when the real outcome, facts, state changes, invariants, trade-offs, or validation method are unclear; do not load this skill for routine lookups, simple one-step requests, or already well-bounded execution.
 compatibility: Works with the user's available documents, artifacts, code, tests, data, and other evidence; no additional tool is required.
+license: MIT
 ---
 
 # First-Principles Problem Solving

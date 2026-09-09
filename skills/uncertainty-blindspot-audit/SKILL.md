@@ -14,6 +14,7 @@ description: >
   conversation, simple translation, routine formatting, or straightforward
   lookups unless the user explicitly asks for an audit.
 compatibility: Uses the current conversation, available evidence, and available tools; no extra dependency required.
+license: MIT
 ---
 
 # Uncertainty and Blind-Spot Audit
