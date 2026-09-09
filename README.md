@@ -12,6 +12,8 @@ Skills will be published as self-contained directories under [`skills/`](skills/
 | --- | --- | --- |
 | [first-principle](skills/first-principle/) | Reduce ambiguity and unnecessary complexity with evidence-driven reasoning. | Available |
 | [uncertainty-blindspot-audit](skills/uncertainty-blindspot-audit/) | Surface weak assumptions, missing factors, and the smallest useful validation steps. | Available |
+| [reference-first-dev](skills/reference-first-dev/) | Find and compare proven implementations before designing a new project or feature. | Available |
+| [inno-packager](skills/inno-packager/) | Create and troubleshoot Windows installers with Inno Setup 6. | Available |
 
 ## What to expect from a skill
 
