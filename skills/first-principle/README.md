@@ -4,13 +4,18 @@ Use this skill when a task is ambiguous, solution-led, likely to expand, or sens
 
 ## What it does
 
-It guides an agent from the observable outcome to the smallest mechanism that can satisfy it:
+It guides an agent from the observable outcome to the smallest complete mechanism within the
+declared scope. Completeness means covering the required outcome, relevant states and transitions,
+invariants, failure or recovery behavior, observability, and acceptance evidence before optimizing
+for fewer concepts or steps:
 
 ```text
-Goal → Facts → States → Invariants → Minimal mechanism → Evidence
+Goal → Scope → Facts → States → Transitions → Invariants
+     → Failure/Recovery → Observability → Minimal Complete Mechanism
+     → Experiment → Evidence → Revised Model
 ```
 
-The skill is useful for product decisions, research, writing, operations, learning, architecture, and engineering work. It also defines explicit non-goals and asks for a small test that could disprove the model.
+The skill is useful for product decisions, research, writing, operations, learning, architecture, and engineering work. It defines a completeness boundary, explicit non-goals, and asks for a small test that could disprove the model or expose an incomplete path.
 
 ## Use it when
 
