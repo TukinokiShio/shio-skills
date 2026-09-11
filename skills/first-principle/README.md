@@ -4,7 +4,7 @@ Use this skill when a task is ambiguous, solution-led, likely to expand, or sens
 
 ## What it does
 
-It guides an agent from the observable outcome to the smallest complete mechanism within the
+It guides an agent from the observable outcome and scope to the smallest complete mechanism within the
 declared scope. Completeness means covering the required outcome, relevant states and transitions,
 invariants, failure or recovery behavior, observability, and acceptance evidence before optimizing
 for fewer concepts or steps:
@@ -15,7 +15,11 @@ Goal → Scope → Facts → States → Transitions → Invariants
      → Experiment → Evidence → Revised Model
 ```
 
-The skill is useful for product decisions, research, writing, operations, learning, architecture, and engineering work. It defines a completeness boundary, explicit non-goals, and asks for a small test that could disprove the model or expose an incomplete path.
+First principles are not maximal decomposition. Decomposition is only a way to expose scope-relative
+starting facts and constraints; the method must rebuild a mechanism from them and test the result.
+“Minimal” means complete within the declared scope, not merely the fewest lines, tables, or steps.
+
+The skill is useful for product decisions, research, writing, operations, learning, architecture, and engineering work. It defines a completeness boundary, separates facts from assumptions, makes explicit non-goals, checks relevant failure and recovery paths, and asks for a small test that could disprove the model or expose an incomplete path.
 
 ## Use it when
 

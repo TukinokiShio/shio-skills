@@ -6,7 +6,9 @@ compatibility: Works with the user's available documents, artifacts, code, tests
 
 # First-Principles Problem Solving
 
-Use this method to reason from the problem's necessary conditions instead of starting from a familiar solution label. Its purpose is to derive the smallest complete mechanism within a declared scope: complete enough to reach the desired outcome, preserve necessary constraints, handle relevant failure or recovery paths, and produce evidence of success, without adding hypothetical complexity.
+Use this method to reason from the problem's necessary conditions instead of starting from a familiar solution label. First principles are not maximal decomposition: within a declared scope, they are the least-dependent facts and hard constraints that must serve as reasoning starting points, alongside the stated outcome and explicit assumptions. Decomposition is one way to expose them; the method is incomplete until it rebuilds a mechanism from those starting points and tests the result.
+
+Its purpose is to derive the smallest complete mechanism within a declared scope: complete enough to reach the desired outcome, preserve necessary constraints, handle relevant failure or recovery paths, and produce evidence of success, without adding hypothetical complexity. “Least-dependent” is scope-relative; it does not require descending to physical atoms or breaking every system into individual parts. Choose the level of abstraction that preserves behavior relevant to the outcome, since emergent properties can make finer decomposition less explanatory.
 
 The method applies to coding, but coding is only one domain. Apply the same reasoning to a product plan, research question, writing brief, operating process, learning plan, procurement decision, or any other task where a solution can become more complex than the problem.
 
@@ -73,6 +75,8 @@ What observable result should the user or system obtain? Describe behavior, not 
 ### Facts
 What is confirmed by the user, current artifact, tests, configuration, measurement, or observation?
 
+Keep confirmed facts, hard constraints, goals, and assumptions separate. A user-provided or inherited assumption is not a fact until evidence supports it.
+
 ### Assumptions / Unknowns
 What is inferred, unverified, or still needs a decision?
 
@@ -134,7 +138,8 @@ for this scope, mark it as an explicit non-goal or assumption rather than silent
 ## 5. Derive the minimum mechanism
 
 Only after the completeness boundary is satisfied, minimize the mechanism. Start from state and
-data changes, not from familiar solution labels.
+data changes at the appropriate abstraction level, not from familiar solution labels or a demand
+to make the implementation physically or textually as small as possible.
 
 - Prefer the fewest concepts that satisfy the outcome, invariants, relevant failure behavior, and
   evidence requirements.
@@ -148,7 +153,7 @@ data changes, not from familiar solution labels.
 
 When comparing options, explain which invariant or evidence requirement each option serves. Avoid choosing technology merely because it is popular, familiar, or easy for the agent to generate.
 
-## 5. Design, then execute
+## 6. Design, then execute
 
 For substantive tasks, work in three passes:
 
@@ -161,7 +166,7 @@ Keep the result traceable to the checkpoint. If new concepts keep appearing, pau
 
 Prefer a vertical slice that proves the key transition end to end. In an engineering task this may be a tested feature; in research it may be a small discriminating experiment; in operations it may be a pilot; in writing it may be a short draft checked against the brief.
 
-## 6. Debug from the first divergence
+## 7. Debug from the first divergence
 
 When an outcome is wrong, do not guess a cause and stack workarounds. Reproduce the failure, trace the actual path, and locate the first point where reality differs from the expected model.
 
@@ -176,7 +181,7 @@ Use this delegation instruction when useful:
 
 > Do not guess the cause or add a workaround first. Trace the complete path from the triggering action to the observed result, find the first actual behavior that differs from the expected behavior, and support the finding with evidence.
 
-## 7. Try to falsify the model and the completeness boundary
+## 8. Try to falsify the model and the completeness boundary
 
 Do not ask only whether a plan or explanation looks reasonable or minimal. Ask how the model could
 be wrong and which in-scope path the proposed mechanism might fail to close.
@@ -188,7 +193,7 @@ be wrong and which in-scope path the proposed mechanism might fail to close.
 
 Do not add every imaginable edge case. Let the mechanism's real boundaries and failure costs drive the test set.
 
-## 8. Delete unsupported complexity
+## 9. Delete unsupported complexity
 
 After the result works, reads clearly, or survives its initial test, perform a removal pass. First
 confirm that the completeness boundary is still covered; then look for:
@@ -204,7 +209,7 @@ evidence remain supported. Rerun the relevant checks after deletion. Deleting un
 complexity is part of quality, but retaining necessary complexity is also a valid result when the
 completeness boundary or evidence supports it.
 
-## 9. Report evidence, not confidence
+## 10. Report evidence, not confidence
 
 When handing back work, summarize:
 
