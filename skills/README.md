@@ -8,5 +8,6 @@ This directory contains the public skills in the collection.
 | [uncertainty-blindspot-audit](uncertainty-blindspot-audit/) | Decisions and analyses where evidence gaps and overlooked risks matter. |
 | [reference-first-dev](reference-first-dev/) | Find and compare proven implementations before designing a new project or feature. |
 | [inno-packager](inno-packager/) | Create and troubleshoot Windows installers with Inno Setup 6. |
+| [course-outline-to-obsidian](course-outline-to-obsidian/) | Build a reviewable Obsidian notes vault, one note per outline item, from any course or textbook outline. |
 
 Each skill lives in its own folder and includes a `SKILL.md` with its purpose, trigger conditions, usage notes, and compatibility information. Open a skill's folder to read its documentation before installing it.
