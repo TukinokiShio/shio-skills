@@ -15,6 +15,7 @@ Skills will be published as self-contained directories under [`skills/`](skills/
 | [reference-first-dev](skills/reference-first-dev/) | Find and compare proven implementations before designing a new project or feature. | Available |
 | [inno-packager](skills/inno-packager/) | Create and troubleshoot Windows installers with Inno Setup 6. | Available |
 | [course-outline-to-obsidian](skills/course-outline-to-obsidian/) | Turn a course or textbook outline into a structured, reviewable Obsidian notes vault. | Available |
+| [dependency-setup](skills/dependency-setup/) | Prepare missing tools and dependencies with an explicit authorization gate before installation. | Available |
 
 ## What to expect from a skill
 
