@@ -1,0 +1,23 @@
+{
+  "skill_name": "dependency-setup",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "这个 Python 项目要运行 pytest，但当前环境找不到 pytest。请先检查 pyproject.toml 和 .venv，告诉我需要安装什么、准备怎么安装；在我授权前不要执行安装。",
+      "expected_output": "只读评估，指出依赖来源、解释器和目标环境，给出精确安装计划，并等待明确授权。",
+      "files": ["pyproject.toml"]
+    },
+    {
+      "id": 2,
+      "prompt": "运行测试时发现 yaml 模块不存在。项目有 requirements-dev.txt。请处理环境问题，但不要全局安装，也不要猜包名。",
+      "expected_output": "确认 requirements-dev.txt 中的发行包，提出项目隔离环境中的安装方案；未获授权前不执行 pip install。",
+      "files": ["requirements-dev.txt"]
+    },
+    {
+      "id": 3,
+      "prompt": "Node 项目有 package-lock.json，npm 依赖缺失。授权你只在该项目目录执行锁定依赖安装，不修改全局环境；安装后运行原测试并报告变更。",
+      "expected_output": "使用 npm 的锁定安装路径，限定项目范围，完成后重新探测、运行测试并检查 diff。",
+      "files": ["package.json", "package-lock.json"]
+    }
+  ]
+}
