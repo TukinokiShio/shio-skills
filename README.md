@@ -14,6 +14,7 @@ Skills will be published as self-contained directories under [`skills/`](skills/
 | [uncertainty-blindspot-audit](skills/uncertainty-blindspot-audit/) | Surface weak assumptions, missing factors, and the smallest useful validation steps. | Available |
 | [reference-first-dev](skills/reference-first-dev/) | Find and compare proven implementations before designing a new project or feature. | Available |
 | [inno-packager](skills/inno-packager/) | Create and troubleshoot Windows installers with Inno Setup 6. | Available |
+| [oq-governance](skills/oq-governance/) | Record material user decisions in synchronized Markdown and JSON lists. | Available |
 | [course-outline-to-obsidian](skills/course-outline-to-obsidian/) | Turn a course or textbook outline into a structured, reviewable Obsidian notes vault. | Available |
 | [dependency-setup](skills/dependency-setup/) | Prepare missing tools and dependencies with an explicit authorization gate before installation. | Available |
 

@@ -8,6 +8,7 @@ This directory contains the public skills in the collection.
 | [uncertainty-blindspot-audit](uncertainty-blindspot-audit/) | Decisions and analyses where evidence gaps and overlooked risks matter. |
 | [reference-first-dev](reference-first-dev/) | Find and compare proven implementations before designing a new project or feature. |
 | [inno-packager](inno-packager/) | Create and troubleshoot Windows installers with Inno Setup 6. |
+| [oq-governance](oq-governance/) | Record material user decisions in synchronized Markdown and JSON. |
 | [course-outline-to-obsidian](course-outline-to-obsidian/) | Build a reviewable Obsidian notes vault, one note per outline item, from any course or textbook outline. |
 | [dependency-setup](dependency-setup/) | Prepare missing tools and dependencies with an explicit authorization gate before installation. |
 
