@@ -1,22 +1,22 @@
 # shio-skills
 
-Practical skills for AI coding agents.
+Practical skills for AI agents.
 
-`shio-skills` is a curated collection of reusable agent skills built to help developers move from a blank prompt to a useful result with less repeated setup.
+`shio-skills` is a curated collection of reusable skills for reasoning, research, learning, Windows packaging, decision tracking, and project setup.
 
 ## Browse the collection
 
-Skills will be published as self-contained directories under [`skills/`](skills/). Each skill is designed to be understandable before installation and useful without requiring the rest of this repository.
+Published skills live in [`skills/`](skills/) as self-contained directories, with any supporting files they need.
 
 | Skill | What it helps with | Status |
 | --- | --- | --- |
-| [first-principle](skills/first-principle/) | Reduce ambiguity and unnecessary complexity with evidence-driven reasoning. | Available |
-| [uncertainty-blindspot-audit](skills/uncertainty-blindspot-audit/) | Surface weak assumptions, missing factors, and the smallest useful validation steps. | Available |
-| [reference-first-dev](skills/reference-first-dev/) | Find and compare proven implementations before designing a new project or feature. | Available |
+| [first-principle](skills/first-principle/) | Break down ambiguous problems and find a clear, evidence-based way forward. | Available |
+| [uncertainty-blindspot-audit](skills/uncertainty-blindspot-audit/) | Spot weak assumptions, missing risks, and what to verify in an analysis or plan. | Available |
+| [reference-first-dev](skills/reference-first-dev/) | Find and compare existing solutions before building a project or feature. | Available |
 | [inno-packager](skills/inno-packager/) | Create and troubleshoot Windows installers with Inno Setup 6. | Available |
-| [oq-governance](skills/oq-governance/) | Record material user decisions in synchronized Markdown and JSON lists. | Available |
-| [course-outline-to-obsidian](skills/course-outline-to-obsidian/) | Turn a course or textbook outline into a structured, reviewable Obsidian notes vault. | Available |
-| [dependency-setup](skills/dependency-setup/) | Prepare missing tools and dependencies with an explicit authorization gate before installation. | Available |
+| [oq-governance](skills/oq-governance/) | Identify decisions that need user input and track their resolution. | Available |
+| [course-outline-to-obsidian](skills/course-outline-to-obsidian/) | Turn course, textbook, or exam outlines into structured Obsidian notes. | Available |
+| [dependency-setup](skills/dependency-setup/) | Find and safely prepare missing project tools and dependencies. | Available |
 
 ## What to expect from a skill
 
@@ -31,7 +31,7 @@ Every published skill should make these questions easy to answer:
 
 ## Using a skill
 
-When a skill is published, its own directory will contain the installation and usage instructions. The general pattern is:
+Start with the skill's `SKILL.md` for its purpose and instructions. Some skills also include a `README.md` with a shorter overview or example. The general directory pattern is:
 
 ```text
 skills/
@@ -43,7 +43,7 @@ skills/
     └── examples/       # optional: small working examples
 ```
 
-Clone the repository, open the skill directory you want, and follow that skill's README. Do not assume that every skill supports every agent runtime; compatibility is documented per skill.
+Clone the repository and open the skill directory you want. Compatibility and setup requirements vary by agent runtime, so check the skill's documentation before use.
 
 ## Design goal
 
@@ -51,4 +51,4 @@ The collection favors focused, composable skills over a large framework. A good 
 
 ## License
 
-Licensing is declared per skill. Until a skill is published, this repository makes no blanket license grant for future contents.
+Licensing is declared per skill. Check the relevant directory's `LICENSE` before reuse; this repository has no blanket license for the collection.
