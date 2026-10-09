@@ -10,6 +10,7 @@ This directory contains the public skills in the collection.
 | [inno-packager](inno-packager/) | Create and troubleshoot Windows installers with Inno Setup 6. |
 | [oq-governance](oq-governance/) | Record material user decisions in synchronized Markdown and JSON. |
 | [course-outline-to-obsidian](course-outline-to-obsidian/) | Build a reviewable Obsidian notes vault, one note per outline item, from any course or textbook outline. |
+| [question-maker](question-maker/) | Generate questions and explanations from course materials, including required visual assets. |
 | [dependency-setup](dependency-setup/) | Prepare missing tools and dependencies with an explicit authorization gate before installation. |
 
 Each skill lives in its own folder and includes a `SKILL.md` with its purpose, trigger conditions, usage notes, and compatibility information. Open a skill's folder to read its documentation before installing it.

@@ -16,6 +16,7 @@ Skills will be published as self-contained directories under [`skills/`](skills/
 | [inno-packager](skills/inno-packager/) | Create and troubleshoot Windows installers with Inno Setup 6. | Available |
 | [oq-governance](skills/oq-governance/) | Record material user decisions in synchronized Markdown and JSON lists. | Available |
 | [course-outline-to-obsidian](skills/course-outline-to-obsidian/) | Turn a course or textbook outline into a structured, reviewable Obsidian notes vault. | Available |
+| [question-maker](skills/question-maker/) | Create evidence-grounded course questions and answer explanations, with required visual assets. | Available |
 | [dependency-setup](skills/dependency-setup/) | Prepare missing tools and dependencies with an explicit authorization gate before installation. | Available |
 
 ## What to expect from a skill
