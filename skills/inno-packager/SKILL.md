@@ -59,6 +59,15 @@ The helper checks the explicit path first, then `ISCC.exe` on `PATH`, then stand
 4. Compile and inspect the compiler output.
 5. Test install, upgrade, shortcut launch, uninstall, and rollback behavior on a clean Windows environment.
 
+## Required Windows shell refresh when installing icons
+
+Whenever an installer changes the application icon or creates/replaces shortcuts that use it, refresh the Windows shell as part of installation:
+
+1. Resolve the actual Desktop and Start Menu folders through Shell Known Folders. Inspect each affected `.lnk` and confirm its `TargetPath` and `IconLocation` point to the installed executable or icon file. Do not assume the Desktop is at a fixed path; it can be redirected.
+2. Run `ie4uinit.exe -ClearIconCache`, then notify the shell with `SHChangeNotify(SHCNE_ASSOCCHANGED, SHCNF_IDLIST, NULL, NULL)` and `SHChangeNotify(SHCNE_UPDATEITEM, SHCNF_PATHW | SHCNF_FLUSH, shortcutPath, NULL)` for each changed shortcut. Check the cache-clear command's exit code, but do not treat it as proof that the visible icon refreshed.
+3. Re-enumerate the desktop window handles on every run. Locate the current `Progman` → `SHELLDLL_DefView` → `SysListView32` (`FolderView`) chain, send `F5` to the desktop list, then call `RedrawWindow` with `RDW_INVALIDATE | RDW_ERASE | RDW_ALLCHILDREN | RDW_UPDATENOW`. Do not reuse stale window handles or terminate all Explorer processes just to refresh icons.
+4. Verify the icon visibly changed on the desktop and re-check the shortcut target and icon path. If it remains stale, diagnose the responsible shell view/cache before considering a controlled restart that preserves open File Explorer windows.
+
 ## Safety and reliability
 
 - Treat `.iss` files and Pascal Script as executable build input; review `[Run]`, `[UninstallRun]`, `Exec`, `ShellExec`, and registry operations before compiling.
