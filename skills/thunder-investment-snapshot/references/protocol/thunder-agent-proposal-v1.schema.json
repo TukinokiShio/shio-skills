@@ -49,10 +49,21 @@
         "properties": {
           "kind": { "const": "investments" },
           "skill_name": { "const": "thunder-investment-snapshot" },
-          "skill_version": { "enum": ["1.1.0", "1.2.0", "1.3.0"] }
+          "skill_version": { "enum": ["1.1.0", "1.2.0", "1.3.0", "1.4.0"] }
         },
         "required": ["skill_name", "skill_version", "source_summary"]
       }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": { "const": "investments" },
+          "skill_name": { "const": "thunder-investment-snapshot" },
+          "skill_version": { "const": "1.4.0" }
+        },
+        "required": ["kind", "skill_name", "skill_version"]
+      },
+      "then": { "properties": { "items": { "items": { "required": ["platform"] } } } }
     }
   ],
   "$defs": {
@@ -106,6 +117,10 @@
         "asset_key": { "type": "string", "minLength": 1, "maxLength": 128 },
         "name": { "type": "string", "minLength": 1, "maxLength": 120 },
         "asset_type": { "type": "string", "minLength": 1, "maxLength": 40 },
+        "platform": {
+          "description": "Source-confirmed holding venue, not the market-data publisher. Free text with no fixed enum; null only when genuinely unknown. Required by Skill 1.4.0 and optional on legacy proposal rows.",
+          "oneOf": [{ "type": "string", "minLength": 1, "maxLength": 100 }, { "type": "null" }]
+        },
         "quantity": { "$ref": "#/$defs/decimalString" },
         "cost_basis": { "oneOf": [{ "$ref": "#/$defs/decimalString" }, { "type": "null" }] },
         "market_value": { "oneOf": [{ "$ref": "#/$defs/decimalString" }, { "type": "null" }] },

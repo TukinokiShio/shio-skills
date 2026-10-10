@@ -9,9 +9,9 @@ const MAX_CONTEXT_BYTES = 8 * 1024 * 1024
 const MAX_ITEMS = 200
 const UUID_V4 = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
 const SKILL_NAME = 'thunder-investment-snapshot'
-const SKILL_VERSION = '1.3.0'
+const SKILL_VERSION = '1.4.0'
 const FIELDS = [
-  'asset_key', 'name', 'asset_type', 'quantity', 'cost_basis', 'market_value', 'currency', 'as_of', 'source_note',
+  'asset_key', 'name', 'asset_type', 'platform', 'quantity', 'cost_basis', 'market_value', 'currency', 'as_of', 'source_note',
   'quantity_kind', 'cost_basis_kind', 'cash_flows', 'cash_flows_complete'
 ]
 const CASH_FLOW_FIELDS = ['flow_id', 'date', 'kind', 'amount', 'currency', 'included_in_market_value']
@@ -19,6 +19,7 @@ const QUANTITY_KINDS = new Set(['shares', 'units', 'currency_amount', 'unknown']
 const COST_BASIS_KINDS = new Set(['total', 'per_unit', 'unknown'])
 const CASH_FLOW_KINDS = new Set(['contribution', 'withdrawal', 'dividend', 'fee'])
 const CONTEXT_BASE_FIELDS = ['asset_key', 'name', 'asset_type', 'quantity', 'cost_basis', 'market_value', 'currency', 'as_of', 'source_note']
+const CONTEXT_OPTIONAL_FIELDS = ['platform']
 const CONTEXT_SEMANTIC_FIELDS = ['quantity_kind', 'cost_basis_kind', 'cash_flows', 'cash_flows_complete']
 const SNAPSHOT_METADATA_FIELDS = ['id', 'operation_id', 'recorded_at']
 const DECIMAL = /^-?(?:0|[1-9]\d*)(?:\.\d+)?$/
@@ -59,7 +60,7 @@ function isDate(value) {
 function validateContextPosition(item, isSnapshot = false) {
   const snapshotRequiredFields = ['operation_id', 'recorded_at']
   const required = isSnapshot ? [...CONTEXT_BASE_FIELDS, ...CONTEXT_SEMANTIC_FIELDS, ...snapshotRequiredFields] : CONTEXT_BASE_FIELDS
-  const allowed = [...CONTEXT_BASE_FIELDS, ...CONTEXT_SEMANTIC_FIELDS, ...(isSnapshot ? SNAPSHOT_METADATA_FIELDS : [])]
+  const allowed = [...CONTEXT_BASE_FIELDS, ...CONTEXT_OPTIONAL_FIELDS, ...CONTEXT_SEMANTIC_FIELDS, ...(isSnapshot ? SNAPSHOT_METADATA_FIELDS : [])]
   if (!isRecord(item) || required.some((field) => !Object.hasOwn(item, field)) || Object.keys(item).some((field) => !allowed.includes(field))) {
     throw new Error('The context contains a holding/snapshot with invalid fields.')
   }
@@ -67,6 +68,10 @@ function validateContextPosition(item, isSnapshot = false) {
     if (typeof item[field] !== 'string' || item[field].length < (field === 'source_note' ? 0 : 1) || item[field].length > max) {
       throw new Error(`The context contains an invalid ${field} string.`)
     }
+  }
+  if (Object.hasOwn(item, 'platform') && item.platform !== null &&
+    (typeof item.platform !== 'string' || item.platform.length < 1 || item.platform.length > 100 || item.platform.trim() !== item.platform || /[\u0000-\u001f\u007f]/.test(item.platform))) {
+    throw new Error('The context contains an invalid platform label.')
   }
   for (const field of ['quantity', 'cost_basis', 'market_value']) {
     const value = item[field]
@@ -128,6 +133,9 @@ function validateItems(items) {
     if (!isRecord(item) || Object.keys(item).length !== FIELDS.length || FIELDS.some((field) => !Object.hasOwn(item, field))) throw new Error(`Row ${index + 1} must contain exactly: ${FIELDS.join(', ')}.`)
     for (const [field, max] of [['asset_key', 128], ['name', 120], ['asset_type', 40], ['source_note', 1000]]) {
       if (typeof item[field] !== 'string' || item[field].length > max || (field !== 'source_note' && item[field].trim().length === 0) || (field !== 'source_note' && item[field].trim() !== item[field])) throw new Error(`Row ${index + 1} has an invalid ${field}.`)
+    }
+    if (item.platform !== null && (typeof item.platform !== 'string' || item.platform.length < 1 || item.platform.length > 100 || item.platform.trim() !== item.platform || /[\u0000-\u001f\u007f]/.test(item.platform))) {
+      throw new Error(`Row ${index + 1} has an invalid platform label; use an observed name or null when unknown.`)
     }
     if (keys.has(item.asset_key)) throw new Error(`Duplicate asset_key: ${item.asset_key}`)
     keys.add(item.asset_key)
