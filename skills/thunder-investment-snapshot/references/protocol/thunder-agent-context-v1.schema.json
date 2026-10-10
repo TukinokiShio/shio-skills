@@ -87,10 +87,6 @@
         "asset_key": { "type": "string", "minLength": 1, "maxLength": 128 },
         "name": { "type": "string", "minLength": 1, "maxLength": 120 },
         "asset_type": { "type": "string", "minLength": 1, "maxLength": 40 },
-        "platform": {
-          "description": "Optional for backward-compatible context rows. Free-text holding venue from an explicit source, not the price/NAV publisher.",
-          "oneOf": [{ "type": "string", "minLength": 1, "maxLength": 100 }, { "type": "null" }]
-        },
         "quantity": { "$ref": "#/$defs/decimalString" },
         "cost_basis": { "oneOf": [{ "$ref": "#/$defs/decimalString" }, { "type": "null" }] },
         "market_value": { "oneOf": [{ "$ref": "#/$defs/decimalString" }, { "type": "null" }] },
@@ -141,10 +137,6 @@
         "asset_key": { "type": "string", "minLength": 1, "maxLength": 128 },
         "name": { "type": "string", "minLength": 1, "maxLength": 120 },
         "asset_type": { "type": "string", "minLength": 1, "maxLength": 40 },
-        "platform": {
-          "description": "Optional for backward-compatible context rows. Free-text holding venue from an explicit source, not the price/NAV publisher.",
-          "oneOf": [{ "type": "string", "minLength": 1, "maxLength": 100 }, { "type": "null" }]
-        },
         "quantity": { "$ref": "#/$defs/decimalString" },
         "cost_basis": { "oneOf": [{ "$ref": "#/$defs/decimalString" }, { "type": "null" }] },
         "market_value": { "oneOf": [{ "$ref": "#/$defs/decimalString" }, { "type": "null" }] },
