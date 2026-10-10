@@ -18,6 +18,7 @@ Skills will be published as self-contained directories under [`skills/`](skills/
 | [course-outline-to-obsidian](skills/course-outline-to-obsidian/) | Turn a course or textbook outline into a structured, reviewable Obsidian notes vault. | Available |
 | [question-maker](skills/question-maker/) | Create evidence-grounded course questions and answer explanations, with required visual assets. | Available |
 | [dependency-setup](skills/dependency-setup/) | Prepare missing tools and dependencies with an explicit authorization gate before installation. | Available |
+| [thunder-investment-snapshot](skills/thunder-investment-snapshot/) | Create dated, source-backed holdings valuations and safe Thunder Accounting snapshot proposals. | Available |
 
 ## What to expect from a skill
 

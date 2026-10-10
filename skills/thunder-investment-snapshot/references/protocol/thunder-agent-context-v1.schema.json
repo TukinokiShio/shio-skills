@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/TukinokiShio/thunder-accounting/blob/master/skills/protocol/thunder-agent-context-v1.schema.json",
+  "title": "Thunder Accounting Agent Context v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "expires_at",
+    "scope_token",
+    "expense_categories",
+    "investment_holdings"
+  ],
+  "properties": {
+    "schema_version": { "const": "thunder-agent-context/v1" },
+    "expires_at": { "type": "string", "format": "date-time" },
+    "scope_token": { "type": "string", "format": "uuid" },
+    "investment_auto_apply": {
+      "description": "Optional account-scoped authorization controlled by Thunder Accounting. When true, a valid proposal from the current investment snapshot Skill may be applied after app-side scope, provenance, schema, and baseline validation.",
+      "type": "boolean"
+    },
+    "expense_categories": {
+      "type": "array",
+      "maxItems": 1000,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "children"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1, "maxLength": 120 },
+          "children": {
+            "type": "array",
+            "maxItems": 1000,
+            "items": { "type": "string", "minLength": 1, "maxLength": 120 }
+          }
+        }
+      }
+    },
+    "investment_holdings": {
+      "type": "array",
+      "maxItems": 10000,
+      "items": { "$ref": "#/$defs/holding" }
+    },
+    "investment_snapshot_history": {
+      "description": "Optional for compatibility with older v1 contexts. When present, contains only user-confirmed historical snapshots in asset_key/as_of order; it is read-only analysis input.",
+      "type": "array",
+      "maxItems": 10000,
+      "items": { "$ref": "#/$defs/snapshot" }
+    }
+  },
+  "$defs": {
+    "decimalString": {
+      "type": "string",
+      "pattern": "^-?(?:0|[1-9][0-9]{0,35})(?:\\.[0-9]{1,18})?$"
+    },
+    "cashFlow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["flow_id", "date", "kind", "amount", "currency", "included_in_market_value"],
+      "properties": {
+        "flow_id": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "date": { "type": "string", "format": "date" },
+        "kind": { "enum": ["contribution", "withdrawal", "dividend", "fee"] },
+        "amount": { "type": "string", "pattern": "^(?=.*[1-9])(?:0|[1-9][0-9]{0,35})(?:\\.[0-9]{1,18})?$" },
+        "currency": { "type": "string", "pattern": "^[A-Z]{3}$" },
+        "included_in_market_value": {
+          "description": "For dividends and fees, whether the flow's economic effect is reflected in the endpoint snapshot market value. Contributions and withdrawals remain external principal flows regardless of this flag.",
+          "type": "boolean"
+        }
+      }
+    },
+    "holding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "asset_key",
+        "name",
+        "asset_type",
+        "quantity",
+        "cost_basis",
+        "market_value",
+        "currency",
+        "as_of",
+        "source_note"
+      ],
+      "properties": {
+        "asset_key": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "name": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "asset_type": { "type": "string", "minLength": 1, "maxLength": 40 },
+        "quantity": { "$ref": "#/$defs/decimalString" },
+        "cost_basis": { "oneOf": [{ "$ref": "#/$defs/decimalString" }, { "type": "null" }] },
+        "market_value": { "oneOf": [{ "$ref": "#/$defs/decimalString" }, { "type": "null" }] },
+        "currency": { "type": "string", "pattern": "^[A-Z]{3}$" },
+        "as_of": { "type": "string", "format": "date" },
+        "source_note": { "type": "string", "maxLength": 1000 },
+        "quantity_kind": {
+          "description": "Optional on legacy context rows; absence means unknown. New Skill proposals must emit it explicitly.",
+          "enum": ["shares", "units", "currency_amount", "unknown"]
+        },
+        "cost_basis_kind": {
+          "description": "Optional on legacy context rows; absence means unknown. New Skill proposals must emit it explicitly.",
+          "enum": ["total", "per_unit", "unknown"]
+        },
+        "cash_flows": {
+          "description": "Optional on legacy context rows; absence is not a verified empty interval.",
+          "type": "array",
+          "maxItems": 200,
+          "items": { "$ref": "#/$defs/cashFlow" }
+        },
+        "cash_flows_complete": {
+          "description": "Optional on legacy rows; absence means false/incomplete. Only true with an empty cash_flows array represents verified zero flows.",
+          "type": "boolean"
+        }
+      }
+    },
+    "snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "asset_key",
+        "name",
+        "asset_type",
+        "quantity",
+        "cost_basis",
+        "market_value",
+        "currency",
+        "as_of",
+        "source_note",
+        "quantity_kind",
+        "cost_basis_kind",
+        "cash_flows",
+        "cash_flows_complete",
+        "operation_id",
+        "recorded_at"
+      ],
+      "properties": {
+        "asset_key": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "name": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "asset_type": { "type": "string", "minLength": 1, "maxLength": 40 },
+        "quantity": { "$ref": "#/$defs/decimalString" },
+        "cost_basis": { "oneOf": [{ "$ref": "#/$defs/decimalString" }, { "type": "null" }] },
+        "market_value": { "oneOf": [{ "$ref": "#/$defs/decimalString" }, { "type": "null" }] },
+        "currency": { "type": "string", "pattern": "^[A-Z]{3}$" },
+        "as_of": { "type": "string", "format": "date" },
+        "source_note": { "type": "string", "maxLength": 1000 },
+        "quantity_kind": { "enum": ["shares", "units", "currency_amount", "unknown"] },
+        "cost_basis_kind": { "enum": ["total", "per_unit", "unknown"] },
+        "cash_flows": { "type": "array", "maxItems": 200, "items": { "$ref": "#/$defs/cashFlow" } },
+        "cash_flows_complete": { "type": "boolean" },
+        "id": {
+          "description": "Optional compatibility field for older app contexts. This local SQLite row id is never included in proposals.",
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "operation_id": {
+          "description": "An empty string is permitted only for legacy snapshots created before operation ids were recorded.",
+          "anyOf": [{ "type": "string", "format": "uuid" }, { "const": "" }]
+        },
+        "recorded_at": { "type": "string", "format": "date-time" }
+      }
+    }
+  }
+}
