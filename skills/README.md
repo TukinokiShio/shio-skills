@@ -4,7 +4,7 @@ This directory contains the public skills in the collection.
 
 | Skill | Best for |
 | --- | --- |
-| [first-principle](first-principle/) | Ambiguous, solution-led, or scope-expanding work. |
+| [first-principle](first-principle/) | Ambiguous, convention-bound, or evidence-sensitive work. |
 | [uncertainty-blindspot-audit](uncertainty-blindspot-audit/) | Decisions and analyses where evidence gaps and overlooked risks matter. |
 | [reference-first-dev](reference-first-dev/) | Find and compare proven implementations before designing a new project or feature. |
 | [inno-packager](inno-packager/) | Create and troubleshoot Windows installers with Inno Setup 6. |

@@ -1,38 +1,33 @@
 # First-Principles Problem Solving
 
-Use this skill when a task is ambiguous, solution-led, likely to expand, or sensitive to evidence and trade-offs.
+**Version:** 1.4.0
+
+Use this skill when the outcome, evidence, constraints, or validation method are unclear; when a solution is being treated as given; or when conventions may be mistaken for requirements. It applies across product decisions, research, writing, operations, learning, procurement, and engineering.
 
 ## What it does
 
-It guides an agent from the observable outcome and scope to the smallest complete mechanism within the
-declared scope. Completeness means covering the required outcome, relevant states and transitions,
-invariants, failure or recovery behavior, observability, and acceptance evidence before optimizing
-for fewer concepts or steps:
+It starts from the outcome and the least-dependent facts and constraints, questions inherited assumptions, and rebuilds an answer that fits the evidence. Its central check is whether each proposed step or structure is required by the outcome, which helps prevent manufactured complexity.
 
-```text
-Goal → Scope → Facts → States → Transitions → Invariants
-     → Failure/Recovery → Observability → Minimal Complete Mechanism
-     → Experiment → Evidence → Revised Model
-```
+The completion criterion depends on the task:
 
-First principles are not maximal decomposition. Decomposition is only a way to expose scope-relative
-starting facts and constraints; the method must rebuild a mechanism from them and test the result.
-“Minimal” means complete within the declared scope, not merely the fewest lines, tables, or steps.
+- **Understanding work:** give a supported explanation, address the strongest rival explanation, and state what evidence would overturn the conclusion. A mechanism is not required.
+- **Change work:** derive the smallest complete mechanism within scope, including the relevant states, invariants, failure or recovery behavior, observability, and acceptance evidence.
 
-The skill is useful for product decisions, research, writing, operations, learning, architecture, and engineering work. It defines a completeness boundary, separates facts from assumptions, makes explicit non-goals, checks relevant failure and recovery paths, and asks for a small test that could disprove the model or expose an incomplete path.
+First principles are not maximal decomposition. Use the level of detail that preserves behavior relevant to the outcome. Treat physical, legal, contractual, safety, and stated acceptance limits as hard constraints; question conventions and inherited practices only when their ownership and purpose allow it.
 
 ## Use it when
 
-- several plausible solutions compete;
-- requirements, ownership, ordering, or failure behavior are unclear;
-- a proposed solution is accumulating unsupported complexity;
-- a collaborator's implementation looks reasonable but lacks evidence.
+- the user names a solution before defining the result they need;
+- a convention or inherited process is treated as necessary without evidence;
+- several plausible approaches compete and the choice has meaningful consequences;
+- the request is likely to expand or important constraints and failure behavior are unclear;
+- a claim or diagnosis needs more than a routine lookup.
 
-For routine lookups and simple one-step changes, the skill intentionally stays out of the way.
+For routine lookups, direct translation, simple formatting, or already bounded one-step work, use direct execution. For symbolic value, value conflicts, aesthetic judgment, tacit knowledge, and decisions under time pressure, first-principles reasoning should assist rather than dictate the conclusion.
 
 ## Compatibility
 
 No extra dependency is required. It works with the files, tests, tools, and evidence available in the current task.
 
-Read [`SKILL.md`](SKILL.md) for the complete workflow.
+Read [`SKILL.md`](SKILL.md) for the complete workflow and [`CHANGELOG.md`](CHANGELOG.md) for public release notes.
 
