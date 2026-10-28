@@ -19,8 +19,10 @@ The skill treats visual completeness as a required quality gate. First inspect t
 
 The agent needs tools to read the supplied files and, where applicable, create charts or diagrams and preview the result. The skill does not install tools or plugins automatically. LaTeX formulas may require MathJax/KaTeX, and Mermaid diagrams may require a compatible renderer or plugin; document these dependencies and provide a plain-text fallback when the target reader may not support them.
 
-## Review and model routing
+## Orchestration and review
 
-The skill defines role contracts for question writing, independent review, adversarial critique, and integration. If independent subagents are unavailable, report `SINGLE_AGENT_REVIEW` as the review mode and do not claim a full independent adversarial review. Its default model route is GPT-6 Luna at very high reasoning; GPT-6.1 Sol is considered only for irreducibly complex, long-horizon reasoning and requires explicit user authorization.
+For exams, tests, larger question sets, or work with strict coverage and scoring requirements, the default is two independent writers producing competing candidates followed by one independent verifier. The verifier first solves without seeing the answer key, then checks for evidence-based defects. A small, low-stakes set of examples embedded in study notes can use one writer and one necessary verification; note format alone does not imply the lighter workflow.
+
+Correctness, substantive ambiguity, scope, answerability, scoring, source support, and required visuals are hard quality gates. Creativity and other quality traits help select among candidates that pass those gates. A defect may trigger at most one targeted correction and a recheck of affected parts. An uncertain claim gets one targeted source or tool check; unresolved candidates are set aside. Do not run open-ended debate. If independent agents are unavailable, report `SINGLE_AGENT_REVIEW` and do not claim an independent review.
 
 See [SKILL.md](SKILL.md) for the complete workflow and quality gates.
